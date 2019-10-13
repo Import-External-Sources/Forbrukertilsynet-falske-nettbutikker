@@ -186,9 +186,9 @@ rm ${inputdb1}
 # ************************************
 RPZ="$(mktemp)"
 
-printf "google-rpz.mypdns.cloud.\t3600\tIN\tSOA\tneed.to.know.only. hostmaster.mypdns.org. `date +%s` 3600 60 604800 60;\ngoogle-rpz.mypdns.cloud.\t3600\tIN\tNS\tlocalhost\n" > "${RPZ}"
+printf "forbrukertilsynet.falske.nettbutikker.mypdns.cloud.\t3600\tIN\tSOA\tneed.to.know.only. hostmaster.mypdns.org. `date +%s` 3600 60 604800 60;\nforbrukertilsynet.falske.nettbutikker.mypdns.cloud.\t3600\tIN\tNS\tlocalhost\n" > "${RPZ}"
 cat "${input1}" | awk '/^#/{ next }; {  printf("%s\tCNAME\t.\n*.%s\tCNAME\t.\n",tolower($1),tolower($1)) }' >> "${RPZ}"
-mv "${RPZ}" "${TRAVIS_BUILD_DIR}"/google-rpz.mypdns.cloud.rpz
+mv "${RPZ}" "${TRAVIS_BUILD_DIR}"/forbrukertilsynet.falske.nettbutikker.mypdns.cloud.rpz
 
 # ***********************************
 # Generate unbound zone file
