@@ -55,6 +55,6 @@ script:
 notifications:
   email:
     recipients:
-      - "${Support_Desk}"
+      - "incoming+my-privacy-dns-support-12528762-issue-@incoming.gitlab.com"
     on_success: always # default: change
     on_failure: always # default: always
