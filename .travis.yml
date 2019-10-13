@@ -20,7 +20,7 @@ env:
     #- GIT_EMAIL: "${GIT_EMAIL}" # Set this value in travis variables
     #- GIT_NAME: "Spirillen"
     #- GIT_EMAIL: 44526987+spirillen@users.noreply.github.com
-    - TRAVIS_REPO_SLUG: Import-External-Sources/template-v1
+    - TRAVIS_REPO_SLUG: Import-External-Sources/Forbrukertilsynet-falske-nettbutikker
     - GIT_BRANCH: master
     - TZ: UTC
     - PYFUNCEBLE_CONFIG_DIR: ${TRAVIS_BUILD_DIR}/dev-tools/
