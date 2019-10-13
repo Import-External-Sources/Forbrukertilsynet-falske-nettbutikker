@@ -1,19 +1,19 @@
-# This hosts file is brought to you by Mitchell Krog
-# Copyright: https://github.com/mitchellkrogza
-# Source: https://github.com/spirillen/Dead-Domains
+# This hosts file for DD-WRT Routers with DNSMasq is brought to you by 
+# https://www.mypdns.org/
+# Copyright: Content: https://gitlab.com/spirillen
+# Source:Content: 
+#
+# Original attributes and credit
+# This hosts file for DD-WRT Routers with DNSMasq is brought to you by Mitchell Krog
+# Copyright:Code: https://github.com/mitchellkrogza
+# Source:Code: https://github.com/mitchellkrogza/Badd-Boyz-Hosts
+# The credit for the original bash scripts goes to Mitchell Krogza
 
 # You are free to copy and distribute this file for non-commercial uses,
 # as long the original URL and attribution is included. 
 
 # Please forward any additions, corrections or comments by logging an issue at
-# https://github.com/spirillen/Dead-Domains/issues
-
-# This list of hosts is compiled from server logs on my own servers
-# and forms the basis of the bad referrers domain lists for
-# The Nginx Ultimate Bad Bot Blocker at: 
-# https://github.com/mitchellkrogza/nginx-ultimate-bad-bot-blocker
-# and the Apache Ultimate Bad Bot Blocker at:
-# https://github.com/mitchellkrogza/apache-ultimate-bad-bot-blocker
+# https://gitlab.com/my-privacy-dns/support/issues
 
 ##### Version Information #
 ###################################################
@@ -34,13 +34,7 @@
 # or C:\Windows\System32\drivers\etc\hosts
 
 127.0.0.1 localhost
-
-# The following lines are desirable for IPv6 capable hosts
-::1     ip6-localhost ip6-loopback
-fe00::0 ip6-localnet
-ff00::0 ip6-mcastprefix
-ff02::1 ip6-allnodes
-ff02::2 ip6-allrouters
+::1 localhost #[IPv6]
 
 # START HOSTS LIST ### DO NOT EDIT THIS LINE AT ALL ###
 0.0.0.0 google.com
