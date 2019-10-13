@@ -50,3 +50,11 @@ sudo: required
 script:
   # We put both in same statement so that if one fails the whole test result will fail.
   - bash dev-tools/PrepareData.sh && bash dev-tools/DataTesting.sh
+
+# https://docs.travis-ci.com/user/notifications/#configuring-email-notifications
+notifications:
+  email:
+    recipients:
+      - ${Support_Desk}
+    on_success: always # default: change
+    on_failure: always # default: always
