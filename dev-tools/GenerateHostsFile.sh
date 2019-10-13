@@ -217,7 +217,7 @@ mv "${uBlock}" "${TRAVIS_BUILD_DIR}"/uBlock.txt
 # **********************************
 # msFilterList
 # **********************************
-msFilterList=="$(mktemp)"
+msFilterList="$(mktemp)"
 
 cat "${input1}" | awk '/^#/{ next }; {  printf("-d %s\n",tolower($1)) }' >> "${msFilterList}"
 mv "${msFilterList}" "${TRAVIS_BUILD_DIR}"/msFilterList.tpl
@@ -225,7 +225,7 @@ mv "${msFilterList}" "${TRAVIS_BUILD_DIR}"/msFilterList.tpl
 # **********************************
 # MinerBlock
 # **********************************
-MinerBlock=="$(mktemp)"
+MinerBlock="$(mktemp)"
 
 cat "${input1}" | awk '/^#/{ next }; {  printf("*://*.\"%s\"/*\n",tolower($1)) }' >> "${MinerBlock}"
 mv "${MinerBlock}" "${TRAVIS_BUILD_DIR}"/MinerBlock.txt
@@ -233,7 +233,7 @@ mv "${MinerBlock}" "${TRAVIS_BUILD_DIR}"/MinerBlock.txt
 # **********************************
 # HostsDeny
 # **********************************
-HostsDeny=="$(mktemp)"
+HostsDeny="$(mktemp)"
 
 cat "${input1}" | awk '/^#/{ next }; {  printf("ALL: %s\n",tolower($1)) }' >> "${HostsDeny}"
 mv "${HostsDeny}" "${TRAVIS_BUILD_DIR}"/HostsDeny.deny
@@ -241,7 +241,7 @@ mv "${HostsDeny}" "${TRAVIS_BUILD_DIR}"/HostsDeny.deny
 # **********************************
 # Privoxy
 # **********************************
-Privoxy=="$(mktemp)"
+Privoxy="$(mktemp)"
 
 printf "{+block}\n# Version: `date +%s`\n{+block{As mentioned in various news articles about fraud sites}}\n"
 cat "${input1}" | awk '/^#/{ next }; {  printf(".%s\n",tolower($1)) }' >> "${Privoxy}"
@@ -250,7 +250,7 @@ mv "${Privoxy}" "${TRAVIS_BUILD_DIR}"/Privoxy.action
 # **********************************
 # Socks5
 # **********************************
-Socks5=="$(mktemp)"
+Socks5="$(mktemp)"
 
 cat "${input1}" | awk '/^#/{ next }; {  printf("DOMAIN-SUFFIX,%s\n",tolower($1)) }' >> "${Socks5}"
 mv "${Socks5}" "${TRAVIS_BUILD_DIR}"/Socks5.action
