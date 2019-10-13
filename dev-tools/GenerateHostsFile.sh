@@ -182,13 +182,21 @@ IN
 rm ${inputdb1}
 
 # ************************************
-# Make unbound always_nxdomain
+# Make RPZ always_nxdomain
 # ************************************
 RPZ="$(mktemp)"
 
 printf "google-rpz.mypdns.cloud.\t3600\tIN\tSOA\tneed.to.know.only. hostmaster.mypdns.org. `date +%s` 3600 60 604800 60;\ngoogle-rpz.mypdns.cloud.\t3600\tIN\tNS\tlocalhost\n" > "${RPZ}"
 cat "${input1}" | awk '/^#/{ next }; {  printf("%s\tCNAME\t.\n*.%s\tCNAME\t.\n",tolower($1),tolower($1)) }' >> "${RPZ}"
 mv "${RPZ}" "${TRAVIS_BUILD_DIR}"/google-rpz.mypdns.cloud.rpz
+
+# ***********************************
+# Generate unbound zone file
+# ***********************************
+UNBOUND="$(mktemp)"
+
+cat "${input1}" | awk '/^#/{ next }; {  printf("local-zone: \"%s\" always_nxdomain\n",tolower($1)) }' >> "${UNBOUND}"
+mv "${UNBOUND}" "${TRAVIS_BUILD_DIR}"/forbrukertilsynet.falske.nettbutikker.zone
 
 # ************************************
 # Copy Files into place before testing
