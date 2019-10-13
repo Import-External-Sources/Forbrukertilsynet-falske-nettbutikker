@@ -1,8 +1,8 @@
 #!/bin/bash
-# This hosts file for DD-WRT Routers with DNSMasq is brought to you by 
+# This hosts file for DD-WRT Routers with DNSMasq is brought to you by
 # https://www.mypdns.org/
 # Copyright: Content: https://gitlab.com/spirillen
-# Source:Content: 
+# Source:Content:
 #
 # Original attributes and credit
 # This hosts file for DD-WRT Routers with DNSMasq is brought to you by Mitchell Krog
@@ -11,7 +11,7 @@
 # The credit for the original bash scripts goes to Mitchell Krogza
 
 # You are free to copy and distribute this file for non-commercial uses,
-# as long the original URL and attribution is included. 
+# as long the original URL and attribution is included.
 
 # Please forward any additions, corrections or comments by logging an issue at
 # https://gitlab.com/my-privacy-dns/support/issues
@@ -180,6 +180,15 @@ w /home/travis/build/spirillen/Dead-Domains/dev-tools/ddwrt-dnsmasq.template
 q
 IN
 rm ${inputdb1}
+
+# ************************************
+# Make unbound always_nxdomain
+# ************************************
+RPZ="$(mktemp)"
+
+printf "google-rpz.mypdns.cloud.\t3600\tIN\tSOA\tneed.to.know.only. hostmaster.mypdns.org. `date +%s` 3600 60 604800 60;\ngoogle-rpz.mypdns.cloud.\t3600\tIN\tNS\tlocalhost\n" > "${RPZ}"
+cat "${input1}" | awk '/^#/{ next }; {  printf("%s\tCNAME\t.\n*.%s\tCNAME\t.\n",tolower($1),tolower($1)) }' >> "${RPZ}"
+mv "${RPZ}" "${TRAVIS_BUILD_DIR}"/google-rpz.mypdns.cloud.rpz
 
 # ************************************
 # Copy Files into place before testing
