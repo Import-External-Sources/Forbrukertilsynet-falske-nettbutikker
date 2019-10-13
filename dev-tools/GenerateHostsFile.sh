@@ -198,6 +198,14 @@ UNBOUND="$(mktemp)"
 cat "${input1}" | awk '/^#/{ next }; {  printf("local-zone: \"%s\" always_nxdomain\n",tolower($1)) }' >> "${UNBOUND}"
 mv "${UNBOUND}" "${TRAVIS_BUILD_DIR}"/forbrukertilsynet.falske.nettbutikker.zone
 
+# ***********************************
+# Generate uBlock file
+# ***********************************
+uBlock="$(mktemp)"
+
+cat "${input1}" | awk '/^#/{ next }; {  printf("\|\|\"%s\"\^\$empty,important\n",tolower($1)) }' >> "${uBlock}"
+mv "${uBlock}" "${TRAVIS_BUILD_DIR}"/uBlock.txt
+
 # ************************************
 # Copy Files into place before testing
 # ************************************
