@@ -16,6 +16,7 @@
 
 yeartag=$(date +%Y)
 monthtag=$(date +%m)
+epoc=$(date +%s)
 
 # ******************
 # Set our Input File
@@ -34,6 +35,7 @@ RunFunceble () {
 
     yeartag=$(date +%Y)
     monthtag=$(date +%m)
+    epoc=$(date +%s)
     ulimit -u
     cd ${TRAVIS_BUILD_DIR}/dev-tools
 
@@ -48,8 +50,8 @@ RunFunceble () {
     PyFunceble --travis -db -ex --dns 95.216.209.53 116.203.32.67 \
     --cmd-before-end "bash ${TRAVIS_BUILD_DIR}/dev-tools/FinalCommit.sh" \
     --plain --autosave-minutes 20 --commit-autosave-message \
-    "V1.${yeartag}.${monthtag}.${TRAVIS_BUILD_NUMBER} [PyFunceble]" --commit-results-message \
-    "V1.${yeartag}.${monthtag}.${TRAVIS_BUILD_NUMBER}" -f ${input}
+    "V1.${yeartag}.${monthtag}.${TRAVIS_BUILD_NUMBER}.${epoc} [PyFunceble]" --commit-results-message \
+    "V1.${yeartag}.${monthtag}.${TRAVIS_BUILD_NUMBER}.${epoc}" -f ${input}
 
 }
 
