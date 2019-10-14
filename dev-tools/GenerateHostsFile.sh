@@ -243,7 +243,7 @@ mv "${HostsDeny}" "${TRAVIS_BUILD_DIR}"/HostsDeny.deny
 # **********************************
 Privoxy="$(mktemp)"
 
-printf "{+block}\n# Version: `date +%s`\n{+block{As mentioned in various news articles about fraud sites}}\n"
+printf "\{+block\}\n# Version: `date +%s`\n\{+block\{As mentioned in various news articles about fraud sites\}\}\n"
 cat "${input1}" | awk '/^#/{ next }; {  printf(".%s\n",tolower($1)) }' >> "${Privoxy}"
 mv "${Privoxy}" "${TRAVIS_BUILD_DIR}"/Privoxy.action
 
