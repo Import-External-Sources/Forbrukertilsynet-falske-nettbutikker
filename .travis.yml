@@ -6,10 +6,10 @@ dist: bionic
 language: python
 
 python:
-  - "3.7"
+  - "3.8.5"
 
-cache:
-  - pip
+#cache:
+#  - pip
 
 env:
   global:
@@ -25,7 +25,16 @@ env:
     - TZ: UTC
     - PYFUNCEBLE_CONFIG_DIR: ${TRAVIS_BUILD_DIR}/dev-tools/
     - PYFUNCEBLE_AUTO_CONFIGURATION: PyFunceble
-
+    - PYFUNCEBLE_CONFIG_DIR: "${TRAVIS_BUILD_DIR}/.pyfunceble/"
+    - PYFUNCEBLE_OUTPUT_LOCATION: "${TRAVIS_BUILD_DIR}/.pyfunceble/"
+    - PYFUNCEBLE_AUTO_CONFIGURATION: yes
+    - PYFUNCEBLE_DB_CHARSET="${DB_CHARSET}"
+    - PYFUNCEBLE_DB_HOST="${DB_HOST}"
+    - PYFUNCEBLE_DB_NAME="${DB_NAME}"
+    - PYFUNCEBLE_DB_USERNAME="${DB_USERNAME}"
+    - PYFUNCEBLE_DB_PASSWORD="${DB_PASSWORD}"
+    - PYFUNCEBLE_DB_PORT="${DB_PORT}"
+    
 addons:
   apt:
     update: true
@@ -50,11 +59,3 @@ sudo: required
 script:
   # We put both in same statement so that if one fails the whole test result will fail.
   - bash dev-tools/PrepareData.sh && bash dev-tools/DataTesting.sh
-
-# https://docs.travis-ci.com/user/notifications/#configuring-email-notifications
-notifications:
-  email:
-    recipients:
-      - "incoming+my-privacy-dns-support-12528762-issue-@incoming.gitlab.com"
-    on_success: always # default: change
-    on_failure: always # default: always
