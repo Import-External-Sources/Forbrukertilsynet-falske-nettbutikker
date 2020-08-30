@@ -38,6 +38,7 @@ addons:
 install:
   - pip3 install --upgrade pip
   - pip3 install  --no-cache-dir -U wheel pyfunceble-dev ultimate-hosts-blacklist-whitelist-dev
+  - pyfunceble --version
 
 git:
   depth: 5
