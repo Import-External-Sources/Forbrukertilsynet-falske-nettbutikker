@@ -22,8 +22,8 @@ epoc=$(date +%s)
 # Set our Input File
 # ******************
 input=${TRAVIS_BUILD_DIR}/PULL_REQUESTS/domains.txt
-pyfuncebleConfigurationFileLocation=${TRAVIS_BUILD_DIR}/dev-tools/.PyFunceble.yaml
-pyfuncebleProductionConfigurationFileLocation=${TRAVIS_BUILD_DIR}/dev-tools/.PyFunceble_production.yaml
+#pyfuncebleConfigurationFileLocation=${TRAVIS_BUILD_DIR}/dev-tools/.PyFunceble.yaml
+#pyfuncebleProductionConfigurationFileLocation=${TRAVIS_BUILD_DIR}/dev-tools/.PyFunceble_production.yaml
 
 # **********************
 # Run PyFunceble Testing
@@ -47,11 +47,11 @@ RunFunceble () {
         rm "${pyfuncebleProductionConfigurationFileLocation}"
     fi
 
-    PyFunceble --travis -db -ex -m --dns 95.216.209.53 116.203.32.67 \
+    PyFunceble --ci -a -db -ex -m --dns 95.216.209.53 116.203.32.67 \
       --cmd-before-end "bash ${TRAVIS_BUILD_DIR}/dev-tools/FinalCommit.sh" \
       --plain --autosave-minutes 20 --database-type mariadb \
-      --commit-autosave-message "V1.${yeartag}.${monthtag}.${TRAVIS_BUILD_NUMBER}.${epoc} [PyFunceble]" \
-      --commit-results-message "V1.${yeartag}.${monthtag}.${TRAVIS_BUILD_NUMBER}.${epoc}" -f ${input}
+      --commit-autosave-message "${yeartag}.${monthtag}.${TRAVIS_BUILD_NUMBER}.${epoc} [Auto Continue]" \
+      --commit-results-message "${yeartag}.${monthtag}.${TRAVIS_BUILD_NUMBER}.${epoc}" -f ${input}
 
 }
 
