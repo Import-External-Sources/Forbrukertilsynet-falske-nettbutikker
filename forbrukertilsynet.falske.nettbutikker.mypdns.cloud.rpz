@@ -1,4 +1,4 @@
-forbrukertilsynet.falske.nettbutikker.mypdns.cloud.	3600	IN	SOA	need.to.know.only. hostmaster.mypdns.org. 1571015375 3600 60 604800 60;
+forbrukertilsynet.falske.nettbutikker.mypdns.cloud.	3600	IN	SOA	need.to.know.only. hostmaster.mypdns.org. 1598817024 3600 60 604800 60;
 forbrukertilsynet.falske.nettbutikker.mypdns.cloud.	3600	IN	NS	localhost
 adidasko.com	CNAME	.
 *.adidasko.com	CNAME	.
