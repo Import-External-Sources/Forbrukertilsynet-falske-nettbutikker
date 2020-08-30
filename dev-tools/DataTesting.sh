@@ -41,16 +41,18 @@ RunFunceble () {
 
     hash PyFunceble
 
-    if [[ -f "${pyfuncebleConfigurationFileLocation}" ]]
-    then
-        rm "${pyfuncebleConfigurationFileLocation}"
-        rm "${pyfuncebleProductionConfigurationFileLocation}"
-    fi
+    #if [[ -f "${pyfuncebleConfigurationFileLocation}" ]]
+    #then
+    #    rm "${pyfuncebleConfigurationFileLocation}"
+    #    rm "${pyfuncebleProductionConfigurationFileLocation}"
+    #fi
 
-    PyFunceble --ci -a -db -ex -m --dns 95.216.209.53 116.203.32.67 \
+    PyFunceble --ci -q -ex --dns 95.216.209.53 116.203.32.67 \
+      -h --idna --mining --hierarchical -m --plain \
+      --autosave-minutes 20 \
+      -db --database-type mariadb -dbr 0 --share-logs \
       --cmd-before-end "bash ${TRAVIS_BUILD_DIR}/dev-tools/FinalCommit.sh" \
-      --plain --autosave-minutes 20 --database-type mariadb \
-      --commit-autosave-message "${yeartag}.${monthtag}.${TRAVIS_BUILD_NUMBER}.${epoc} [Auto Continue]" \
+      --commit-autosave-message "${yeartag}.${monthtag}.${TRAVIS_BUILD_NUMBER}.${epoc} [Auto Saved]" \
       --commit-results-message "${yeartag}.${monthtag}.${TRAVIS_BUILD_NUMBER}.${epoc}" -f ${input}
 
 }
