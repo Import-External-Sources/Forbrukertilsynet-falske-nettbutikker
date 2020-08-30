@@ -1,24 +1,21 @@
 # This script requires setting up your 'Personal access tokens' from github
 # in your travis build setting as 'GH_TOKEN' and running travis encrypt
 # API authentication from travis
-dist: bionic
-
 language: python
+os: linux
+dist: bionic
 
 python:
   - "3.8.5"
-
-#cache:
-#  - pip
 
 env:
   global:
     - GIT_NAME: "Spirillen"
     - GIT_EMAIL: 44526987+spirillen@users.noreply.github.com
-    - TRAVIS_REPO_SLUG: Import-External-Sources/Forbrukertilsynet-falske-nettbutikker
-    - GIT_BRANCH: master
+    - TRAVIS_REPO_SLUG: ${TRAVIS_REPO_SLUG}
+    - GIT_BRANCH: ${TRAVIS_BRANCH}
     - TZ: UTC
-    - PYFUNCEBLE_CONFIG_DIR: ${TRAVIS_BUILD_DIR}/dev-tools/
+    - PYFUNCEBLE_CONFIG_DIR: "${TRAVIS_BUILD_DIR}/.pyfunceble/" #${TRAVIS_BUILD_DIR}/dev-tools/
     - PYFUNCEBLE_AUTO_CONFIGURATION: PyFunceble
     - PYFUNCEBLE_CONFIG_DIR: "${TRAVIS_BUILD_DIR}/.pyfunceble/"
     - PYFUNCEBLE_OUTPUT_LOCATION: "${TRAVIS_BUILD_DIR}/.pyfunceble/"
@@ -36,12 +33,11 @@ addons:
     packages:
     - dos2unix
     - msttcorefonts
+    - lsof
 
 install:
   - pip3 install --upgrade pip
-  - pip3 install PyFunceble-dev
-  #- pip3 install ultimate-hosts-blacklist-whitelist
-  - pip3 install ultimate-hosts-blacklist-whitelist
+  - pip3 install  --no-cache-dir -U wheel pyfunceble-dev ultimate-hosts-blacklist-whitelist-dev
 
 git:
   depth: 5
