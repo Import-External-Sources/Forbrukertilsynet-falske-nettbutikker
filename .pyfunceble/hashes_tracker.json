@@ -1,0 +1,12 @@
+{
+    "/home/travis/build/Import-External-Sources/Forbrukertilsynet-falske-nettbutikker/PULL_REQUESTS/domains.txt": {
+        "base": {
+            "datetime_iso": "2020-09-27T19:11:09.586701",
+            "hash": "5f2f007548479e6852d9a341cfe0e289c1b9c3e435f839715c5b30a5"
+        },
+        "latest": {
+            "datetime_iso": "2020-09-27T19:11:09.586701",
+            "hash": "5f2f007548479e6852d9a341cfe0e289c1b9c3e435f839715c5b30a5"
+        }
+    }
+}
